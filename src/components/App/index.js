@@ -10,8 +10,6 @@ import "bootstrap/dist/css/bootstrap.css";
 // Components
 import NavBar from '../NavBar';
 import ChartPanel from '../ChartPanel';
-
-import withSplashScreen from '../withSplashScreen';
 import PlotlySankey from '../PlotlySankey';
 import WordCloud from '../WordCloud';
 import ApexBubble from '../ApexBubble';
@@ -62,4 +60,4 @@ class App extends Component {
   }
 }
 
-export default withSplashScreen(App);
+export default App;
