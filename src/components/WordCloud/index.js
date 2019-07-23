@@ -5,7 +5,6 @@ import ReactWordcloud from 'react-wordcloud';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-
 import realWords from './realWords';
 
 const options = {
@@ -13,10 +12,10 @@ const options = {
   enableTooltip: true,
   deterministic: false,
   fontFamily: 'impact',
-  fontSizes: [15, 45],
+  fontSizes: [20, 60],
   fontStyle: 'normal',
   fontWeight: 'normal',
-  // padding: 1,
+  padding: 1,
   rotations: 3,
   rotationAngles: [0, 90],
   scale: 'sqrt',
@@ -29,10 +28,12 @@ class WordCloud extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
-    this.select = this.select.bind(this);
+    this.selectGbu = this.selectGbu.bind(this);
+    this.selectQuestion = this.selectQuestion.bind(this);
     this.state = {
       dropdownOpen: false,
-      value : "1"
+      gbu : "1",
+      question : "1"
     };
   }
 
@@ -42,34 +43,53 @@ class WordCloud extends React.Component {
     });
   }
 
-  select(event) {
+  selectGbu(event) {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen,
-      value: event.target.innerText
+      gbu: event.target.innerText
     });
   }
 
-  createCloud(selection){
-    return <ReactWordcloud options={options} words={selection} />
+  selectQuestion(event){
+
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen,
+      question: event.target.innerText
+    });
   }
 
-  
-  render() {
+  filters(data){
 
-    console.log(realWords[0]["1"]);
+    var filtered = [];
+    data[0][this.state.gbu].forEach(element => {
+      if(element.question === this.state.question ){
+        filtered.push(element);
+      }
+    });
+    return filtered;
+  }
+
+  render() {
 
     return (
         <div style={{height: 700}}>
 
-            <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-              <Dropdown.Item onClick={this.select}>1</Dropdown.Item>
-              <Dropdown.Item onClick={this.select}>2</Dropdown.Item>
-              <Dropdown.Item onClick={this.select}>3</Dropdown.Item>
-              <Dropdown.Item onClick={this.select}>4</Dropdown.Item>
+            <DropdownButton id="dropdown-basic-button" title="GBU">
+              <Dropdown.Item onClick={this.selectGbu}>1</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectGbu}>2</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectGbu}>3</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectGbu}>4</Dropdown.Item>
             </DropdownButton>
 
-             <ReactWordcloud options={options} words={realWords[0][this.state.value]} /> 
-             
+            <DropdownButton id="dropdown-basic-button" title="Question">
+              <Dropdown.Item onClick={this.selectQuestion}>1</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectQuestion}>2</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectQuestion}>3</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectQuestion}>4</Dropdown.Item>
+            </DropdownButton>
+
+             <ReactWordcloud options={options} words={this.filters(realWords)}/> 
+
          </div>
     );
   }
