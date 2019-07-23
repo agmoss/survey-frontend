@@ -21,7 +21,7 @@ const options = {
 class WordCloud extends React.Component {
   render() {
     return (
-        <div style={{height: 700, width: 1000}}>
+        <div style={{height: 700}}>
             <ReactWordcloud options={options} words={words} />
         </div>
     );

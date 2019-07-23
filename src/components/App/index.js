@@ -25,7 +25,7 @@ class App extends Component {
       <div className="App">
         <NavBar title="Survey Dashboard"/>
 
-        <div className="container">
+        <div className="container-fluid">
 
           <div className="card-columns d-flex justify-content-center">
 

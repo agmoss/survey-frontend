@@ -28,7 +28,7 @@ class PlotlySankey extends React.Component {
           },
         ]}
 
-        layout={{width:1000, height: 700, title: 'Sankey Sample'}}
+        layout={{width:1500, height: 700, title: 'Sankey Sample'}}
       />
     );
   }

@@ -2,6 +2,7 @@ version: '3'
 
 services:
   web:
+  #DO NOT USE THIS IMAGE PLZ
     image: m0sscr.azurecr.io/devicesclient:latest
     build:
       context: ./
