@@ -4,18 +4,17 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.css";
 
 //Containers
-import LineChart from '../../containers/LineChart';
-import DataSquare from '../../containers/DataTable';
+//import LineChart from '../../containers/LineChart';
+//import DataSquare from '../../containers/DataTable';
 
 // Components
 import NavBar from '../NavBar';
 import ChartPanel from '../ChartPanel';
-import DataPanel from '../DataPanel';
+
 import withSplashScreen from '../withSplashScreen';
-import PlotlySample from '../PlotlySample';
 import PlotlySankey from '../PlotlySankey';
-import Sankey from '../Sankey';
 import WordCloud from '../WordCloud';
+import ApexBubble from '../ApexBubble';
 
 class App extends Component {
 
@@ -32,22 +31,25 @@ class App extends Component {
 
           <div className="card-columns d-flex justify-content-center">
 
-
             <ChartPanel title = "Sankey">
               <PlotlySankey/>
             </ChartPanel>
+
+          </div>
+
+          <div className="card-columns d-flex justify-content-center">
 
             <ChartPanel title = "Word Cloud">
               <WordCloud/>
             </ChartPanel>
 
-            {/* <DataPanel title = "Recent Entries">
-              <DataSquare {...this.props}/>
-            </DataPanel> */}
+          </div>
 
-            {/* <ChartPanel title = "PlotlySAMPLE">
-              <PlotlySample/>
-            </ChartPanel> */}
+          <div className="card-columns d-flex justify-content-center">
+
+            <ChartPanel title = "Bubble">
+              <ApexBubble/>
+            </ChartPanel>
 
           </div>
 
