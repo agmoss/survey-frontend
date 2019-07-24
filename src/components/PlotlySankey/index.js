@@ -1,10 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-
-import realData from './realData';
-
 import sankeyData from './sankeyData';
-
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
@@ -19,7 +15,7 @@ class PlotlySankey extends React.Component {
     this.state = {
       dropdownOpen: false,
       gbu : "1",
-      question : 1
+      question : 1,
     };
   }
 
@@ -40,43 +36,27 @@ class PlotlySankey extends React.Component {
 
     this.setState({
       dropdownOpen: !this.state.dropdownOpen,
-      question: event.target.innerText
+      question: parseInt(event.target.innerText)
     });
   }
 
   filters(data){
 
-    var source= [];
-    var target= [];
-    var value=  [];
-
-
-
     var filtered = [];
     data[this.state.gbu].forEach(element => {
-      console.log(element.question);
       if(element.question === this.state.question){
         filtered.push(element);
       }
     });
 
-
     return filtered;
-
-
-
-    // data.sankey_sample["1"].forEach(element => {
-    //   source.push(element.source);
-    //   target.push(element.target);
-    //   value.push(element.value);
-    // });
-
-
-    // return filtered;
 
   }
 
   render() {
+
+    var labels = ['Culture','Communication','Leadership','Change','Management',
+    'Transparency','Team','People','Good', 'Neutral','Bad'];
 
     var source= [];
     var target= [];
@@ -85,8 +65,9 @@ class PlotlySankey extends React.Component {
     var filt = this.filters(sankeyData)
 
     filt.forEach(element => {
-      source.push(element.source);
-      target.push(element.target);
+
+      source.push(element.source -2);
+      target.push(element.target -2);
       value.push(element.value);
     });
 
@@ -94,11 +75,8 @@ class PlotlySankey extends React.Component {
       {
         source : source,
         target: target,
-        value:value
+        value : value
       }
-
-      
-    console.log(filt);
 
     return (
 
@@ -120,7 +98,6 @@ class PlotlySankey extends React.Component {
 
           <DropdownButton id="dropdown-basic-button" title="Question">
             <Dropdown.Item onClick={this.selectQuestion}>1</Dropdown.Item>
-            <Dropdown.Item onClick={this.selectQuestion}>2</Dropdown.Item>
             <Dropdown.Item onClick={this.selectQuestion}>3</Dropdown.Item>
           </DropdownButton>
 
@@ -128,8 +105,8 @@ class PlotlySankey extends React.Component {
 
       <div>
 
-        
         <Plot
+        
           data={[
             {
               type: "sankey",
@@ -141,13 +118,14 @@ class PlotlySankey extends React.Component {
                   color: "black",
                   width: 0.5
                 },
-              label: realData.label,
-              color: realData.color
+              label: labels,
                   },
               link: link
             },
+            
           ]}
-          layout={{width:1500, height: 700, title: 'Sankey Sample'}}
+          layout={{width:1500, height: 700, title: 'Sankey'}}
+
         />
         </div>
       </div>
