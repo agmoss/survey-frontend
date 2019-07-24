@@ -32,7 +32,7 @@ class WordCloud extends React.Component {
     this.selectQuestion = this.selectQuestion.bind(this);
     this.state = {
       dropdownOpen: false,
-      gbu : "1",
+      gbu : "All",
       question : "1"
     };
   }
@@ -69,6 +69,48 @@ class WordCloud extends React.Component {
     return filtered;
   }
 
+
+  filters2(data){
+
+    var filtered = [];
+
+    if (this.state.gbu !== "All"){
+
+      data[0][this.state.gbu].forEach(element => {
+        if(element.question === this.state.question){
+          filtered.push(element);
+        }
+      });
+  
+      return filtered;
+    }
+
+    else {
+
+      var all = [];
+
+      for (let index = 0; index < Object.keys(data[0]).length; index++) {
+        const element = data[0][index];
+        all = all.concat(element);
+      }
+
+      all = all.filter(function( element ) {
+        return element !== undefined;
+      });
+
+
+      all.forEach(element => {
+        if(element.question === this.state.question){
+          filtered.push(element);
+        }
+      });
+  
+      return filtered;
+
+    }
+
+  }
+
   render() {
 
     return (
@@ -84,6 +126,7 @@ class WordCloud extends React.Component {
               <Dropdown.Item onClick={this.selectGbu}>6</Dropdown.Item>
               <Dropdown.Item onClick={this.selectGbu}>7</Dropdown.Item>
               <Dropdown.Item onClick={this.selectGbu}>8</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectGbu}>All</Dropdown.Item>
             </DropdownButton>
 
             <DropdownButton id="dropdown-basic-button" title="Question">
@@ -94,7 +137,7 @@ class WordCloud extends React.Component {
         
         <div style={{height: 700}}>
 
-            <ReactWordcloud options={options} words={this.filters(realWords)}/> 
+            <ReactWordcloud options={options} words={this.filters2(realWords)}/> 
           </div>
         </div>
 

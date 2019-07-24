@@ -14,7 +14,7 @@ class PlotlySankey extends React.Component {
     this.selectQuestion = this.selectQuestion.bind(this);
     this.state = {
       dropdownOpen: false,
-      gbu : "1",
+      gbu : "All",
       question : 1,
     };
   }
