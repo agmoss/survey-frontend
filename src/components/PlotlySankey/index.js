@@ -40,16 +40,52 @@ class PlotlySankey extends React.Component {
     });
   }
 
+  flatten(arr) {
+    var flat = {};
+    for (var i = 0; i < arr.length; i++) {
+        flat = flat.concat(arr[i]);
+    }
+    return flat;
+}
+
   filters(data){
 
     var filtered = [];
-    data[this.state.gbu].forEach(element => {
-      if(element.question === this.state.question){
-        filtered.push(element);
-      }
-    });
 
-    return filtered;
+    if (this.state.gbu !== "All"){
+
+      data[this.state.gbu].forEach(element => {
+        if(element.question === this.state.question){
+          filtered.push(element);
+        }
+      });
+  
+      return filtered;
+    }
+
+    else {
+
+      var all = [];
+
+      for (let index = 0; index < Object.keys(data).length; index++) {
+        const element = data[index];
+        all = all.concat(element);
+      }
+
+      all = all.filter(function( element ) {
+        return element !== undefined;
+      });
+
+
+      all.forEach(element => {
+        if(element.question === this.state.question){
+          filtered.push(element);
+        }
+      });
+  
+      return filtered;
+
+    }
 
   }
 
@@ -69,6 +105,7 @@ class PlotlySankey extends React.Component {
       source.push(element.source -2);
       target.push(element.target -2);
       value.push(element.value);
+
     });
 
     var link = 
@@ -95,6 +132,7 @@ class PlotlySankey extends React.Component {
             <Dropdown.Item onClick={this.selectGbu}>6</Dropdown.Item>
             <Dropdown.Item onClick={this.selectGbu}>7</Dropdown.Item>
             <Dropdown.Item onClick={this.selectGbu}>8</Dropdown.Item>
+            <Dropdown.Item onClick={this.selectGbu}>All</Dropdown.Item>
             
           </DropdownButton>
 
