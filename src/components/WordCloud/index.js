@@ -72,25 +72,32 @@ class WordCloud extends React.Component {
   render() {
 
     return (
-        <div style={{height: 700}}>
 
-            <DropdownButton id="dropdown-basic-button" title="GBU">
+      <div>
+        <p>GBU: {this.state.gbu} Question: {this.state.question}</p>
+        <DropdownButton id="dropdown-basic-button" title="GBU">
               <Dropdown.Item onClick={this.selectGbu}>1</Dropdown.Item>
               <Dropdown.Item onClick={this.selectGbu}>2</Dropdown.Item>
               <Dropdown.Item onClick={this.selectGbu}>3</Dropdown.Item>
               <Dropdown.Item onClick={this.selectGbu}>4</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectGbu}>5</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectGbu}>6</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectGbu}>7</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectGbu}>8</Dropdown.Item>
             </DropdownButton>
 
             <DropdownButton id="dropdown-basic-button" title="Question">
               <Dropdown.Item onClick={this.selectQuestion}>1</Dropdown.Item>
               <Dropdown.Item onClick={this.selectQuestion}>2</Dropdown.Item>
               <Dropdown.Item onClick={this.selectQuestion}>3</Dropdown.Item>
-              <Dropdown.Item onClick={this.selectQuestion}>4</Dropdown.Item>
             </DropdownButton>
+        
+        <div style={{height: 700}}>
 
-             <ReactWordcloud options={options} words={this.filters(realWords)}/> 
+            <ReactWordcloud options={options} words={this.filters(realWords)}/> 
+          </div>
+        </div>
 
-         </div>
     );
   }
 }

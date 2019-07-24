@@ -2,12 +2,31 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 
 import sankeyData from './data';
+import realData from './realData';
+
 
 class PlotlySankey extends React.Component {
 
   render() {
 
-    console.log(sankeyData.label);
+    ////console.log(realData.sankey_sample["1"][0]);
+
+    var source= [];
+    var target= [];
+    var value=  [];
+    realData.sankey_sample["1"].forEach(element => {
+      source.push(element.source);
+      target.push(element.target);
+      value.push(element.value);
+    });
+
+    var link = 
+      {source : source,
+      target: target,
+    value:value}
+
+    console.log(source);
+
     return (
       <Plot
         data={[
@@ -24,7 +43,7 @@ class PlotlySankey extends React.Component {
              label: sankeyData.label,
              color: sankeyData.color
                 },
-            link: sankeyData.link
+            link: link
           },
         ]}
 
