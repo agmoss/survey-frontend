@@ -10,17 +10,17 @@ import realWords from './realWords';
 const options = {
   colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b'],
   enableTooltip: true,
-  deterministic: false,
+  //deterministic: false,
   fontFamily: 'impact',
   fontSizes: [20, 60],
   fontStyle: 'normal',
   fontWeight: 'normal',
-  padding: 1,
-  rotations: 3,
+  padding: 5,
+  //rotations: 3,
   rotationAngles: [0, 90],
   scale: 'sqrt',
-  spiral: 'archimedean',
-  transitionDuration: 1000,
+  //spiral: 'archimedean',
+  transitionDuration: 1500,
 };
 
 class WordCloud extends React.Component {

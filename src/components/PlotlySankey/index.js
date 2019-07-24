@@ -83,6 +83,7 @@ class PlotlySankey extends React.Component {
       <div>
 
         <div>
+
           <p>GBU: {this.state.gbu} Question: {this.state.question}</p>
 
           <DropdownButton id="dropdown-basic-button" title="GBU">
@@ -94,6 +95,7 @@ class PlotlySankey extends React.Component {
             <Dropdown.Item onClick={this.selectGbu}>6</Dropdown.Item>
             <Dropdown.Item onClick={this.selectGbu}>7</Dropdown.Item>
             <Dropdown.Item onClick={this.selectGbu}>8</Dropdown.Item>
+            
           </DropdownButton>
 
           <DropdownButton id="dropdown-basic-button" title="Question">
@@ -124,8 +126,12 @@ class PlotlySankey extends React.Component {
             },
             
           ]}
-          layout={{width:1500, height: 700, title: 'Sankey'}}
+          layout={{width:1700, height: 700}}
 
+          config = {{
+            showLink: false,
+            displayModeBar: false
+          }}
         />
         </div>
       </div>

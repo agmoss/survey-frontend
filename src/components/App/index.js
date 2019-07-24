@@ -12,8 +12,6 @@ import NavBar from '../NavBar';
 import ChartPanel from '../ChartPanel';
 import PlotlySankey from '../PlotlySankey';
 import WordCloud from '../WordCloud';
-import ApexBubble from '../ApexBubble';
-import ApexLine from '../ApexLine';
 
 class App extends Component {
 
@@ -40,22 +38,6 @@ class App extends Component {
 
             <ChartPanel title = "Word Cloud">
               <WordCloud/>
-            </ChartPanel>
-
-          </div>
-
-          <div className="card-columns d-flex justify-content-center">
-
-            <ChartPanel title = "Bubble">
-              <ApexBubble/>
-            </ChartPanel>
-
-          </div>
-
-          <div className="card-columns d-flex justify-content-center">
-
-            <ChartPanel title = "Line">
-              <ApexLine/>
             </ChartPanel>
 
           </div>
