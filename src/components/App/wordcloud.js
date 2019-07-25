@@ -10,7 +10,6 @@ import "bootstrap/dist/css/bootstrap.css";
 // Components
 import Navigation from '../Navigation';
 import ChartPanel from '../ChartPanel';
-import PlotlySankey from '../PlotlySankey';
 import WordCloud from '../WordCloud';
 
 class App extends Component {
@@ -22,17 +21,10 @@ class App extends Component {
       <Fragment>
 
       <div className="App">
+
          <Navigation/>
 
         <div className="container-fluid">
-
-          <div className="card-columns d-flex justify-content-center">
-
-            <ChartPanel title = "Sankey">
-              <PlotlySankey/>
-            </ChartPanel>
-
-          </div>
 
           <div className="card-columns d-flex justify-content-center">
 

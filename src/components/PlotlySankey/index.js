@@ -1,6 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import sankeyData from './sankeyData';
+import sankeyData from './sankeyData2';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 

@@ -19,46 +19,6 @@
   margin: 0.2rem;
 }
 
-.navbar-light .navbar-brand {
-    color: rgba(255,255,255,.9);
-}
-
-.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
-    color: rgba(255,255,255,1);
-}
-
-/* Responsive D3 */
- .svg-container {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%;
-  vertical-align: top;
-  overflow: hidden;
-}
-.svg-content {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-} 
-
-div.tooltip {	
-  position: absolute;			
-  text-align: center;			
-  padding: 5px;
-  font: 12px sans-serif;		
-  background: rgb(153, 153, 153);	
-  border: 0px;		
-  border-radius: 8px;			
-  pointer-events: none;			
-}
-
-/* Hardcoded chart size - This needs to be changed */
-.lineStyle {
-  min-width:1200px;
-}
-
 .color-me{
   color:white;
 }
@@ -70,4 +30,31 @@ div.tooltip {
 .farLeft{
   position: absolute;
   left: 10px;
+}
+
+
+
+.navbar-custom {
+  background-color: #ffae00dc;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: rgba(0, 0, 0, 0.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.8);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
+}
+
+
+.center {
+  margin: auto;
+  
+  padding: 100px;
 }

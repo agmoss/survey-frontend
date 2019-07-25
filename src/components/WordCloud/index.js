@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactWordcloud from 'react-wordcloud';
-//import words from './words';
-//import Dropdown from 'react-dropdown'
+
 
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import realWords from './realWords';
+import realWords from './wordData';
 
 const options = {
   colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b'],
@@ -16,7 +15,7 @@ const options = {
   fontStyle: 'normal',
   fontWeight: 'normal',
   padding: 5,
-  //rotations: 3,
+  rotations: 3,
   rotationAngles: [0, 90],
   scale: 'sqrt',
   //spiral: 'archimedean',
