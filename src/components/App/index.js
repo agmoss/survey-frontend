@@ -36,7 +36,7 @@ class App extends Component {
 
           <div className="card-columns d-flex justify-content-center">
 
-            <ChartPanel title = "Word Cloud">
+            <ChartPanel title = "Negative Sentiment Word Cloud">
               <WordCloud/>
             </ChartPanel>
 

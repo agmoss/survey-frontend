@@ -4,7 +4,7 @@ import ReactWordcloud from 'react-wordcloud';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import realWords from './wordData';
+import realWords from './wordData2';
 
 const options = {
   colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b'],
@@ -31,8 +31,8 @@ class WordCloud extends React.Component {
     this.selectQuestion = this.selectQuestion.bind(this);
     this.state = {
       dropdownOpen: false,
-      gbu : "All",
-      question : "1"
+      gbu : "all",
+      question : "1",
     };
   }
 
@@ -50,11 +50,25 @@ class WordCloud extends React.Component {
   }
 
   selectQuestion(event){
-
     this.setState({
       dropdownOpen: !this.state.dropdownOpen,
       question: event.target.innerText
     });
+  }
+
+
+  getUnique(arr, comp) {
+
+    const unique = arr
+        .map(e => e[comp])
+
+      // store the keys of the unique objects
+      .map((e, i, final) => final.indexOf(e) === i && i)
+
+      // eliminate the dead keys & store unique objects
+      .filter(e => arr[e]).map(e => arr[e]);
+
+    return unique;
   }
 
   filters(data){
@@ -62,53 +76,17 @@ class WordCloud extends React.Component {
     var filtered = [];
     data[0][this.state.gbu].forEach(element => {
       if(element.question === this.state.question ){
-        filtered.push(element);
+
+        if(element.sentiment === "0"){
+          filtered.push(element);
+        }
+        
       }
     });
-    return filtered;
+
+    return this.getUnique(filtered,"text");
   }
 
-
-  filters2(data){
-
-    var filtered = [];
-
-    if (this.state.gbu !== "All"){
-
-      data[0][this.state.gbu].forEach(element => {
-        if(element.question === this.state.question){
-          filtered.push(element);
-        }
-      });
-  
-      return filtered;
-    }
-
-    else {
-
-      var all = [];
-
-      for (let index = 0; index < Object.keys(data[0]).length; index++) {
-        const element = data[0][index];
-        all = all.concat(element);
-      }
-
-      all = all.filter(function( element ) {
-        return element !== undefined;
-      });
-
-
-      all.forEach(element => {
-        if(element.question === this.state.question){
-          filtered.push(element);
-        }
-      });
-  
-      return filtered;
-
-    }
-
-  }
 
   render() {
 
@@ -125,7 +103,7 @@ class WordCloud extends React.Component {
               <Dropdown.Item onClick={this.selectGbu}>6</Dropdown.Item>
               <Dropdown.Item onClick={this.selectGbu}>7</Dropdown.Item>
               <Dropdown.Item onClick={this.selectGbu}>8</Dropdown.Item>
-              <Dropdown.Item onClick={this.selectGbu}>All</Dropdown.Item>
+              <Dropdown.Item onClick={this.selectGbu}>all</Dropdown.Item>
             </DropdownButton>
 
             <DropdownButton id="dropdown-basic-button" title="Question">
@@ -136,7 +114,7 @@ class WordCloud extends React.Component {
         
         <div style={{height: 700}}>
 
-            <ReactWordcloud options={options} words={this.filters2(realWords)}/> 
+            <ReactWordcloud options={options} words={this.filters(realWords)}/> 
           </div>
         </div>
 
