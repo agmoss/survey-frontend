@@ -16,7 +16,7 @@
     "react-bootstrap-table-next": "^3.1.5",
     "react-dom": "^16.8.6",
     "react-dropdown": "^1.6.4",
-    "react-plotly.js": "^2.3.0",
+    "react-plotly.js": "^2.4.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-vis": "^1.11.7",
