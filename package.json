@@ -22,7 +22,7 @@
     "react-vis": "^1.11.7",
     "react-wordcloud": "^1.0.8",
     "reactstrap": "^8.0.1",
-    "serve": "^11.0.2"
+    "serve": "^11.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
